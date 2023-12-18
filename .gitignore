@@ -1,0 +1,12 @@
+# extension이 없는 실행 파일을 ignore 하기 위해 다음과 같은 조건이 필요하다.
+
+# ignore all
+*
+# unignore all with extension
+!*.*
+# unignore all dir
+!*/
+
+# 그런 다음 다음 파일을 ignore 한다.
+**/.vscode
+project/build*/
