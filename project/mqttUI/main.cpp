@@ -5,7 +5,6 @@
 #include <QQuickView>
 #include <QQmlApplicationEngine>
 
-#include "mainwindow.h"
 
 #include <QApplication>
 
@@ -26,7 +25,7 @@ int main(int argc, char *argv[])
         QMqttTopicFilter topic("Sensor/GH1/Center/Temp");
         client.subscribe(topic);
     });
-    
+
     QObject::connect(&client, &QMqttClient::messageReceived, [](const QByteArray &message, const QMqttTopicName &topic){
         qDebug() << "Message received:" << message << "on topic:" << topic.name();
     });

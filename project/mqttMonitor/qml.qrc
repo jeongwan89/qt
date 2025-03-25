@@ -1,0 +1,6 @@
+// filepath: /home/kjw/Git/qt/project/mqttMonitor/qml.qrc
+<RCC>
+    <qresource prefix="/">
+        <file>Main.qml</file>
+    </qresource>
+</RCC>
