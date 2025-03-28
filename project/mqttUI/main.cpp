@@ -36,8 +36,12 @@ int main(int argc, char *argv[])
         client.subscribe(topic); // 토픽 구독
     });
 
-    QObject::connect(&client, &QMqttClient::messageReceived, [](const QByteArray &message, const QMqttTopicName &topic){
-        qDebug() << "Message received:" << message << "on topic:" << topic.name(); // 메시지 수신 시 디버그 출력
+    QObject::connect(&client, &QMqttClient::messageReceived, [&engine](const QByteArray &message, const QMqttTopicName &topic){
+        QObject *rootObject = engine.rootObjects().first();
+        QMetaObject::invokeMethod(rootObject, "handleMessageReceived",
+                                  Q_ARG(QVariant, QString::fromUtf8(message)),
+                                  Q_ARG(QVariant, topic.name()));
+        qDebug() << "Message received:" << message << "on topic:" << topic.name(); // 메시지 수신 디버그 출력
     });
 
     return app.exec(); // 이벤트 루프 시작
