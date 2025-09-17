@@ -14,8 +14,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Mqtt)
+find_package(Qt6 REQUIRED COMPONENTS Widgets Quick Mqtt)
 
+add_executable(mqttMonitor
+    main.cpp
+    mainwindow.cpp
+    mainwindow.h
+    mainwindow.ui
+    qml.qrc
+)
 target_link_libraries(mqttMonitor 
                         PRIVATE 
                         Qt6::Widgets
